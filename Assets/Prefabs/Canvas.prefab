@@ -537,7 +537,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 434342614173316783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DashBehaviour, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4361041632366368616
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,8 +838,8 @@ RectTransform:
   m_Children:
   - {fileID: 6231903111943929286}
   - {fileID: 8847196308161503871}
-  - {fileID: 4376797839611567879}
   - {fileID: 3853162546831914543}
+  - {fileID: 4376797839611567879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

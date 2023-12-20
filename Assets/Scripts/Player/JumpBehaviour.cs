@@ -8,7 +8,7 @@ public class JumpBehaviour : MonoBehaviour
     public float jumpPower = 10.0f;
     public GroundCheck GroundCheck = null;
 
-    private void Jump()
+    public void Jump()
     {
         if (GroundCheck.isgrounded)
         {
