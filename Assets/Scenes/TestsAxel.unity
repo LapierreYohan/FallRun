@@ -343,11 +343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 474530006}
   rb: {fileID: 474530001}
-  dashForce: 300
-  dashUpwardForce: 0.5
-  dashDuration: 0.5
-  dashCd: 1
-  disableGravity: 0
+  dashForce: 700
+  dashTime: 0.3
 --- !u!1 &540071535
 GameObject:
   m_ObjectHideFlags: 0

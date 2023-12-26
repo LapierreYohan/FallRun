@@ -10,49 +10,44 @@ public class Dashing : MonoBehaviour {
 
     [Header("Dashing")]
     public float dashForce;
-    public float dashUpwardForce;
-    public float dashDuration;
+    public float dashTime;
 
-    [Header("Cooldown")]
-    public float dashCd;
-    private float dashCdTimer;
-
-    [Header("Settings")]
-    public bool disableGravity = false;
+    private float t;
+    private Vector3 forceToApply;
+    private Vector3 start;
+    private Vector3 end;
+    private bool isDashing = false;
+    private float dashTimer = 0f;
 
     private void Update()
     {
-        if (dashCdTimer > 0)
-            dashCdTimer -= Time.deltaTime;
+        if (isDashing) {
+            if (dashTimer <= dashTime)
+            {
+                rb.position = Vector3.Lerp(start, end, t += 0.1f * Time.deltaTime);
+                dashTimer += Time.deltaTime;
+                Debug.Log("Dashing");
+            }else
+            {
+                dashTimer = 0f;
+                t = 0f;
+                isDashing = false;
+                start = Vector3.zero;
+                end = Vector3.zero;
+                forceToApply = Vector3.zero;
+                Debug.Log("Not Dashing");
+            }
+        }
     }
 
     public void Dash()
     {
-        if (dashCdTimer > 0) return;
-        else dashCdTimer = dashCd;
+        isDashing = true;
+        start = rb.position;
+        forceToApply = orientation.forward * dashForce;
+        end = start + forceToApply;
 
-        if (disableGravity)
-            rb.useGravity = false;
-
-        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
-
-        rb.AddForce(forceToApply, ForceMode.Impulse);
-
-        Invoke("DelayedDashForce", 0.1f);
-
-        Invoke("ResetDash", dashDuration);
-    }
-
-    private Vector3 delayedForceToApply;
-    private void DelayedDashForce()
-    {
-        rb.AddForce(delayedForceToApply, ForceMode.Impulse);
-    }
-
-    public void ResetDash()
-    {
-
-        if (disableGravity)
-            rb.useGravity = true;
+        Debug.Log("Dash");
+        
     }
 }
