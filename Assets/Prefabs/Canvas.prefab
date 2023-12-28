@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 3545716977038622621}
   - component: {fileID: 434342614173316783}
   - component: {fileID: 8820752266285914676}
+  - component: {fileID: 5415285269467652622}
   m_Layer: 5
   m_Name: DashButton
   m_TagString: Untagged
@@ -538,8 +539,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DashBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 5415285269467652622}
+        m_TargetAssemblyTypeName: Dashing, Assembly-CSharp
         m_MethodName: Dash
         m_Mode: 1
         m_Arguments:
@@ -550,6 +551,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5415285269467652622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508044845763879279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee5c0a5321bb1499d1e5f20b85f2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
+  rb: {fileID: 0}
+  dashForce: 700
+  dashTime: 0.3
 --- !u!1 &4361041632366368616
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +713,7 @@ GameObject:
   - component: {fileID: 3070853819462782564}
   - component: {fileID: 740201412760455595}
   - component: {fileID: 1830661241231484373}
+  - component: {fileID: 4237716543018916804}
   m_Layer: 5
   m_Name: SlideButton
   m_TagString: Untagged
@@ -804,7 +822,35 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 740201412760455595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4237716543018916804}
+        m_TargetAssemblyTypeName: Sliding, Assembly-CSharp
+        m_MethodName: Slide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4237716543018916804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514856050355175536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26090751131242d4ebc470705ee1dab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
+  rb: {fileID: 0}
+  slideForce: 200
+  slideTime: 0.2
 --- !u!1 &9053857300768570428
 GameObject:
   m_ObjectHideFlags: 0

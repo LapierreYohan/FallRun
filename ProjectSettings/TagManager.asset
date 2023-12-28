@@ -13,8 +13,8 @@ TagManager:
   - UI
   - Ground
   - GroundCheck
-  - 
-  - 
+  - Wall
+  - WallCheck
   - 
   - 
   - 
