@@ -7,6 +7,7 @@ public class Sliding : MonoBehaviour {
     [Header("References")]
     public Transform orientation;
     public Rigidbody rb;
+    public WallCheck WallCheck = null;
 
     [Header("Sliding")]
     public float slideForce;
@@ -22,7 +23,7 @@ public class Sliding : MonoBehaviour {
     private void Update()
     {
         if (isSliding) {
-            if (slideTimer <= slideTime)
+            if (slideTimer <= slideTime && !WallCheck.iswalled)
             {
                 rb.position = Vector3.Lerp(start, end, t += 0.1f * Time.deltaTime);
                 slideTimer += Time.deltaTime;
@@ -37,7 +38,7 @@ public class Sliding : MonoBehaviour {
                 forceToApply = Vector3.zero;
                 Debug.Log("Not Dashing");
             }
-        }
+        }   
     }
 
     public void Slide()
