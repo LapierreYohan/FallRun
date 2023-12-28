@@ -8,6 +8,8 @@ public class Sliding : MonoBehaviour {
     public Transform orientation;
     public Rigidbody rb;
     public WallCheck WallCheck = null;
+    public Collider wallCollider;
+    public Collider wallSlidingCollider;
 
     [Header("Sliding")]
     public float slideForce;
@@ -36,6 +38,10 @@ public class Sliding : MonoBehaviour {
                 start = Vector3.zero;
                 end = Vector3.zero;
                 forceToApply = Vector3.zero;
+
+                wallCollider.enabled = true;
+                wallSlidingCollider.enabled = false;
+
                 Debug.Log("Not Dashing");
             }
         }   
@@ -47,6 +53,9 @@ public class Sliding : MonoBehaviour {
         start = rb.position;
         forceToApply = orientation.forward * slideForce;
         end = start + forceToApply;
+
+        wallCollider.enabled = false;
+        wallSlidingCollider.enabled = true;
 
         Debug.Log("Dash");
         
