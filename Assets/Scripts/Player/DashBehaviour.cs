@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dashing : MonoBehaviour {
-
     [Header("References")]
     public Transform orientation;
     public Rigidbody rb;
@@ -11,6 +11,8 @@ public class Dashing : MonoBehaviour {
     [Header("Dashing")]
     public float dashForce;
     public float dashTime;
+
+    public Animator animator = null;
 
     private float t;
     private Vector3 forceToApply;
@@ -48,6 +50,10 @@ public class Dashing : MonoBehaviour {
         end = start + forceToApply;
 
         Debug.Log("Dash");
-        
+
+        if (animator != null)
+        {
+            animator.SetBool("Dash_in", true);
+        }
     }
 }

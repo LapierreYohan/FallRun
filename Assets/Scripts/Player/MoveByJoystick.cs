@@ -26,8 +26,6 @@ public class MoveByJoystick : MonoBehaviour
         if (animator != null)
         {
             animator.SetFloat("Speed", inputMouvement.magnitude * speed);
-            animator.SetBool("Running_jump", false);
-            animator.SetBool("Running_slide", false);
         }
     }
 }
