@@ -7,6 +7,8 @@ public class Dashing : MonoBehaviour {
     [Header("References")]
     public Transform orientation;
     public Rigidbody rb;
+    public WallCheck WallCheck = null;
+    public GroundCheck GroundCheck = null;
 
     [Header("Dashing")]
     public float dashForce;
@@ -24,7 +26,7 @@ public class Dashing : MonoBehaviour {
     private void Update()
     {
         if (isDashing) {
-            if (dashTimer <= dashTime)
+            if (dashTimer <= dashTime && !WallCheck.iswalled && !GroundCheck.isgrounded)
             {
                 rb.position = Vector3.Lerp(start, end, t += 0.1f * Time.deltaTime);
                 dashTimer += Time.deltaTime;
