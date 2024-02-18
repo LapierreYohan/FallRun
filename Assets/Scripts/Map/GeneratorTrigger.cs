@@ -5,14 +5,14 @@ using UnityEngine;
 public class GeneratorTrigger : MonoBehaviour
 {
     public GameObject mapGenerator;
-    public GameObject wallKiller;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             mapGenerator.GetComponent<GenerateMap>().IsTrigger();
-            wallKiller.GetComponent<WallKiller>().StartWall();
+            foreach (var killer in FindObjectsOfType<WallKiller>())
+                killer.StartWall();
         }
     }
 }
