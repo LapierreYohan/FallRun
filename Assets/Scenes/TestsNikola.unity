@@ -482,10 +482,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: level_0
       objectReference: {fileID: 0}
-    - target: {fileID: 3488242694144596231, guid: 449e697f675cf2043a5c7ecc6dc3376e, type: 3}
-      propertyPath: wallKiller
-      value: 
-      objectReference: {fileID: 1039977164}
     - target: {fileID: 8332092652295201262, guid: 449e697f675cf2043a5c7ecc6dc3376e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
