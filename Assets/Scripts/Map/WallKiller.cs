@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WallKiller : MonoBehaviour
 {
+    public GameManager gameManager = null;
     public float speed = 1;
     bool startMove = false;
 
@@ -13,6 +14,7 @@ public class WallKiller : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
+            gameManager.ResetGame();
         }
     }
 
