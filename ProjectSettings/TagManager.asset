@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - MAP
+  - Level
+  - Waiting
+  - PlayerKiller
   layers:
   - Default
   - TransparentFX
