@@ -1,64 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Dashing : MonoBehaviour
 {
-    public Rigidbody playerRigidbody;
-    public float dashPower = 10f;
-    public float dashDuration = 0.5f;
-    public WallCheck wallCheck;
+
+    [Header("References")]
     public Transform orientation;
+    public Rigidbody rb;
+    public WallCheck WallCheck = null;
 
+    [Header("Sliding")]
+    public float dashForce;
+    public float dashTime;
+
+    private float t;
+    private Vector3 forceToApply;
+    private Vector3 start;
+    private Vector3 end;
     private bool isDashing = false;
+    private float dashTimer = 0f;
 
-    void Start()
+    private void Update()
     {
-        Button button = GetComponent<Button>();
-        Debug.Log("Button attached to DashBehaviour START !");
-        if (button != null)
+        if (isDashing)
         {
-            button.onClick.AddListener(PerformDash);
-            Debug.Log("Button attached to DashBehaviour !");
+            Debug.Log("Dashing");
+            if (dashTimer <= dashTime && !WallCheck.iswalled)
+            {
+                Debug.Log("Dashing2");
+                rb.position = Vector3.Lerp(start, end, t += 0.1f * Time.deltaTime);
+                dashTimer += Time.deltaTime;
+                
+            }
+            else
+            {
+                Debug.Log("Not Dashing2");
+                dashTimer = 0f;
+                t = 0f;
+                isDashing = false;
+                start = Vector3.zero;
+                end = Vector3.zero;
+                forceToApply = Vector3.zero;
+            }
         }
         else
         {
-            Debug.LogError("Le script doit être attaché à un GameObject avec un composant Button.");
+            Debug.Log("Not Dashing");
         }
     }
 
-    void PerformDash()
+    public void Dash()
     {
-        if (!isDashing && !wallCheck.iswalled)
-        {
-            Debug.Log("Dash !");
-            isDashing = true;
-            Vector3 vector3 = new Vector3(orientation.forward.x, 0, orientation.forward.z);
-            Debug.Log("Dash vector3 : " + vector3);
-            playerRigidbody.velocity = vector3 * dashPower;
+        Debug.Log("Dash");
 
-            Debug.Log("Dash direction : " + orientation.forward);
-            Debug.Log("Dash power : " + dashPower);
+        isDashing = true;
+        start = rb.position;
+        forceToApply = orientation.forward * dashForce;
+        end = start + forceToApply;
 
-            // Désactive la gravité et les mouvements du joueur pendant le dash
-            playerRigidbody.useGravity = false;
-            playerRigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
-
-            Invoke("EndDash", dashDuration);
-        }
-        else
-        {
-            Debug.Log("Already dashing or walled !");
-        }
-    }
-
-    void EndDash()
-    {
-        Debug.Log("End of dash !");
-        isDashing = false;
-        playerRigidbody.useGravity = true;
-        playerRigidbody.constraints = RigidbodyConstraints.None;
     }
 }
